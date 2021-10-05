@@ -25,6 +25,11 @@ func init() {
 				&controllers.UserController{},
 			),
 		),
+		beego.NSNamespace("/anchor",
+			beego.NSInclude(
+				&controllers.AnchorController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
