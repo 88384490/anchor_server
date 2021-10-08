@@ -16,7 +16,6 @@ type AnchorController struct {
 // @router / [post]
 func (a *AnchorController) Post() {
 	data := models.QueryAll()
-	println(data)
 	a.Data["json"] = data
 	a.ServeJSON()
 }

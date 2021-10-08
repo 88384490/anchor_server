@@ -15,18 +15,18 @@ func init() {
 		port, _    = beego.AppConfig.String("MYSQL_PORT")
 		sqlUrls    = user + `:` + pwd + `@tcp(` + sqlcoon + `:` + port + `)/anchor?charset=utf8`
 	)
-	orm.RegisterModel(new(types.Anchor))
+	orm.RegisterModel(new(types.Movie))
 	orm.RegisterDataBase("default", "mysql", sqlUrls)
 	orm.RunSyncdb("default", false, true)
 }
 
-func QueryAll() []types.Anchor {
-	var anchorData []types.Anchor
+func QueryMovie() []types.Movie {
+	var movieData []types.Movie
 	qb, _ := orm.NewQueryBuilder("mysql")
-	qb.Select("*").From("anchor")
+	qb.Select("*").From("movie")
 	sql := qb.String()
 	o := orm.NewOrm()
-	o.Raw(sql, 0).QueryRows(&anchorData)
-	println(anchorData)
-	return anchorData
+	o.Raw(sql, 0).QueryRows(&movieData)
+	println(movieData)
+	return movieData
 }
