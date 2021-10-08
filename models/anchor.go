@@ -6,7 +6,7 @@ import (
 )
 
 var userName = "root"
-var password = "vkx9r5xy*"
+var password = "Vkx9r5xy"
 var (
 	sqlUrl = userName + `:` + password + `@tcp(rm-bp187qy95g848549ulo.mysql.rds.aliyuncs.com:3306)/anchor?charset=utf8`
 )
@@ -21,10 +21,10 @@ type Anchor struct {
 }
 
 func init() {
-	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("anchor", "mysql", sqlUrl)
-	orm.RunSyncdb("anchor", false, true)
 	orm.RegisterModel(new(Anchor))
+	orm.RegisterDriver("mysql", orm.DRMySQL)
+	orm.RegisterDataBase("default", "mysql", sqlUrl)
+	orm.RunSyncdb("default", false, true)
 }
 
 func QueryAll() []Anchor {
@@ -34,5 +34,6 @@ func QueryAll() []Anchor {
 	sql := qb.String()
 	o := orm.NewOrm()
 	o.Raw(sql, 0).QueryRows(&anchorData)
+	println(anchorData)
 	return anchorData
 }

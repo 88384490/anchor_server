@@ -7,11 +7,13 @@ import (
 	beego "github.com/beego/beego/v2/server/web"
 )
 
+// UserController
 // Operations about Users
 type UserController struct {
 	beego.Controller
 }
 
+// Post
 // @Title CreateUser
 // @Description create users
 // @Param	body		body 	models.User	true		"body for user content"
@@ -26,6 +28,7 @@ func (u *UserController) Post() {
 	u.ServeJSON()
 }
 
+// GetAll
 // @Title GetAll
 // @Description get all Users
 // @Success 200 {object} models.User
@@ -36,6 +39,7 @@ func (u *UserController) GetAll() {
 	u.ServeJSON()
 }
 
+// Get
 // @Title Get
 // @Description get user by uid
 // @Param	uid		path 	string	true		"The key for staticblock"
@@ -55,6 +59,7 @@ func (u *UserController) Get() {
 	u.ServeJSON()
 }
 
+// Put
 // @Title Update
 // @Description update the user
 // @Param	uid		path 	string	true		"The uid you want to update"
@@ -77,6 +82,7 @@ func (u *UserController) Put() {
 	u.ServeJSON()
 }
 
+// Delete
 // @Title Delete
 // @Description delete the user
 // @Param	uid		path 	string	true		"The uid you want to delete"
@@ -90,6 +96,7 @@ func (u *UserController) Delete() {
 	u.ServeJSON()
 }
 
+// Login
 // @Title Login
 // @Description Logs user into the system
 // @Param	username		query 	string	true		"The username for login"
@@ -108,6 +115,7 @@ func (u *UserController) Login() {
 	u.ServeJSON()
 }
 
+// Logout
 // @Title logout
 // @Description Logs out current logged in user session
 // @Success 200 {string} logout success
@@ -116,4 +124,3 @@ func (u *UserController) Logout() {
 	u.Data["json"] = "logout success"
 	u.ServeJSON()
 }
-

@@ -16,6 +16,15 @@ func init() {
 			Filters:          nil,
 			Params:           nil})
 
+	beego.GlobalControllerRouter["anchor_server/controllers:AnchorController"] = append(beego.GlobalControllerRouter["anchor_server/controllers:AnchorController"],
+		beego.ControllerComments{
+			Method:           "Get",
+			Router:           "/:id",
+			AllowHTTPMethods: []string{"get"},
+			MethodParams:     param.Make(),
+			Filters:          nil,
+			Params:           nil})
+
 	beego.GlobalControllerRouter["anchor_server/controllers:ObjectController"] = append(beego.GlobalControllerRouter["anchor_server/controllers:ObjectController"],
 		beego.ControllerComments{
 			Method:           "Post",

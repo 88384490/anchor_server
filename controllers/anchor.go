@@ -20,3 +20,16 @@ func (a *AnchorController) Post() {
 	a.Data["json"] = data
 	a.ServeJSON()
 }
+
+// Get
+// @Title QueryAnchors
+// @Success 200 {[]} models.Anchor
+// @Failure 403 body is empty
+// @router /:id [get]
+func (a *AnchorController) Get() {
+	param := a.Ctx.Input.Param(":id")
+	println(a.Ctx.Input)
+	if param != "" {
+		println(param)
+	}
+}
